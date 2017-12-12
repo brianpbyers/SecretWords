@@ -1,7 +1,29 @@
 console.log("this is initializing game logic");
 $(document).ready(function(){
-	// dummy words for now.  Will populate with more words and ensure scalability for this purpose.
-	let wordArray = ['Potato','New York', 'Egypt', 'Tree', 'Pen', 'Hat', 'Bubblegum', 'Glasses', 'Fish', 'Boat', 'Water', 'Fish', 'Shark', 'Table', 'Chair', 'Sweatshirt', 'Mug', 'Spoon', 'Laptop', 'Sandals', 'Jacket', 'Pants', 'Bees', 'Ears', 'Eyes', 'Nose', 'Mouth', 'Lips', 'Projector', 'Television', 'Watch', 'Trashcan', 'Rome', 'War', 'Knight', 'Ninja', 'Battle', 'Underwear', 'Australia', 'Kangaroo', 'Snake', 'Whale', 'Narwhal', 'Soda', 'Hair', 'Wig', 'Glasses', 'Pencil', 'Dragon', 'Cow', 'Milk', 'Sheep', 'Goat', 'Cheese', 'Mountain', 'Lake', 'River', 'Window', 'Door', 'Picture', 'Word', 'Frame', 'Girl','Boy', 'Chalkboard', 'Teacher', 'Mt Fuji', 'Skyscraper', 'Koala', 'Apple', 'Orange', 'Banana', 'Steak', 'Chicken', 'Green', 'Blue', 'Black', 'Red', 'Yellow', 'Orange', 'Purple', 'White'];
+	// HOLY WORD LIST!
+	let wordArray = ['FACE', 'BERLIN', 'POUND', 'SUB', 'WATCH', 'LEAD', 'RABBIT', 'ICE CREAM', 'CAT', 'SHOT', 'EGYPT', 'THEATER', 'LUCK', 'AMAZON', 'BERMUDA', 'ARM', 
+	'PIRATE', 'HORSE', 'BELT', 'LIGHT', 'CAP', 'TRIANGLE', 'AUSTRALIA', 'LIMOUSINE', 'MARBLE', 'STAFF', 'LEMON', 'BELL', 'MISSILE', 'PASTE', 'EMBASSY', 'ROBOT', 'WIND', 
+	'KID', 'FALL', 'SCALE', 'RAY', 'POST', 'MARCH', 'CONTRACT', 'CHANGE', 'ROSE', 'COVER', 'CELL', 'SEAL', 'CROSS', 'GIANT', 'NAIL', 'GREECE', 'SQUARE', 'TIE', 'TABLE', 
+	'PARK', 'FIGURE', 'GREEN', 'PASS', 'POINT', 'TUBE', 'MAIL', 'RING', 'DUCK', 'MOON', 'NET', 'DEGREE', 'BOW', 'TABLET', 'SLIP', 'FISH', 'COTTON', 'WAKE', 
+	'FIGHTER', 'LINK', 'DANCE', 'DRILL', 'DATE', 'SPRING', 'COURT', 'CROWN', 'HIMALAYAS', 'WHALE', 'DIAMOND', 'PISTOL', 'ROW', 'KIWI', 'CODE', 'HORN', 'CARD', 'STAR', 
+	'POOL', 'SOUND', 'PAPER', 'BANK', 'BOOM', 'BLOCK', 'FRANCE', 'DINOSAUR', 'BILL', 'TAP', 'MOUTH', 'GAME', 'WASHER', 'YARD', 'CHEST', 'LIFE', 'LAP', 'HOLE', 'BEAT', 
+	'PIN', 'WAR', 'MOUSE', 'KNIFE', 'CHURCH', 'PLATE', 'LINE', 'SATELLITE', 'LAWYER', 'MODEL', 'TOKYO', 'ROCK', 'LONDON', 'POLICE', 'LION', 'SCREEN', 'FAIR', 
+	'COLD', 'CRICKET', 'CHECK', 'QUEEN', 'HOLLYWOOD', 'WELL', 'STADIUM', 'DRAGON', 'PITCH', 'KING', 'ORGAN', 'JAM', 'BAR', 'FILE', 'AGENT', 'BUCK', 'WITCH', 'KETCHUP', 
+	 'BRUSH', 'LOCK', 'SUPERHERO', 'OIL', 'DROP', 'PHOENIX', 'CASINO', 'PILOT', 'DOG', 'CONDUCTOR', 'CHARGE', 'BEACH', 'HAM', 'DRAFT', 'BOMB', 'RULER', 
+	'SPACE', 'HOOK', 'BOARD', 'CLOAK', 'CENTER', 'CHICK', 'BUFFALO', 'DECK', 'TORCH', 'STATE', 'TRACK', 'FORCE', 'BAT', 'MASS', 'SCIENTIST', 'STOCK', 'DEATH', 'AMERICA', 
+	'IVORY', 'APPLE', 'POLE', 'AMBULANCE', 'DRESS', 'BUG', 'MINT', 'CHAIR', 'WATER', 'MATCH', 'IRON', 'BALL', 'DOCTOR', 'EYE', 'MEXICO', 'AIR', 'CALF', 'SPINE', 'DRESS', 
+	'TRIP', 'CRANE', 'COPPER', 'JACK', 'SOUL', 'EUROPE', 'CAR', 'WAVE', 'PYRAMID', 'OPERA', 'PLATYPUS', 'STICK', 'SMUGGLER', 'ENGLAND', 'TRAIN', 'FIELD', 'LOCH NESS', 'LOG', 
+	'PARACHUTE', 'HOTEL', 'UNICORN', 'SPY', 'BOX', 'MOUNT', 'PANTS', 'WALL', 'PIPE', 'NOVEL', 'INDIA', 'ROUND', 'AFRICA', 'SERVER', 'SCHOOL', 'BEIJING', 
+	'RACKET', 'TOOTH', 'PLAY', 'PLANE', 'ROME', 'PUPIL', 'PLOT', 'SHOE', 'MOLE', 'CLUB', 'SINK', 'SWING', 'HAND', 'PORT', 'DISEASE', 'EAGLE', 'GENIUS', 'FORK', 'GERMANY', 
+	'PIANO', 'SPOT', 'TIME', 'PRINCESS', 'COMIC', 'MAMMOTH', 'ANTARCTICA', 'THUMB', 'STRIKE', 'KANGAROO', 'SNOWMAN', 'HELICOPTER', 'VACUUM', 'ATLANTIS', 'VET', 'VAN', 'BOND', 
+	'PAN', 'POISON', 'TOWER', 'FILM', 'BUTTON', 'STRING', 'NIGHT', 'CLIFF', 'LAB', 'TEMPLE', 'ORANGE', 'SATURN', 'HOSPITAL', 'ALPS', 'WORM', 'CANADA', 'SCORPION', 'CHINA', 
+	'BOLT', 'AZTEC', 'MAPLE', 'BATTERY', 'HAWK', 'JUPITER', 'SHARK', 'OLYMPUS', 'NINJA', 'BOOT', 'GHOST', 'SLUG', 'COMPOUND', 'SWITCH', 'STRAW', 'DICE', 'SHIP', 'CRASH', 
+	'TAIL', 'BACK', 'CZECH', 'TELESCOPE', 'CYCLE', 'NUT', 'SOCK', 'PART', 'BUGLE', 'SUIT', 'CHOCOLATE', 'FENCE', 'CAPITAL', 'WEB', 'FAN', 'KEY', 'ALIEN', 'OCTOPUS', 'WHIP', 
+	'SPELL', 'GRASS', 'SOLDIER', 'BERRY', 'ICE', 'TAG', 'NOTE', 'GROUND', 'FIRE', 'BAND', 'BRIDGE', 'ROBIN', 'GRACE', 'OLIVE', 'ROULETTE', 'MERCURY', 'PIE', 'KNIGHT', 'GOLD', 
+	'TICK', 'BED', 'CIRCLE', 'TRUNK', 'SNOW', 'HONEY', 'HORSESHOE', 'REVOLUTION', 'COOK', 'FOOT', 'NEW YORK', 'GAS', 'CAST', 'THIEF', 'BARK', 'CARROT', 'FLUTE', 'HOOD', 'HEART', 
+	'SHOP', 'NEEDLE', 'NURSE', 'BEAR', 'GLASS', 'FLY', 'PIT', 'PENGUIN', 'ROOT', 'ANGEL', 'SPIDER', 'MINE', 'TURKEY', 'MOSCOW', 'PALM', 'CONCERT', 'MUG', 
+	 'ENGINE', 'JET', 'HEAD', 'LITTER', 'SHADOW', 'CENTAUR', 'GLOVE', 'STREAM', 'PUMPKIN', 'TEACHER', 'FEATHER', 'BOTTLE', 'DWARF', 'PLASTIC', 
+	'DAY'];
 	// list of 24 of the 25 game tiles.  The 25th will be determined during the makeGameBoard Process
 	let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B','T','T','T','T','T','T','T','X'];
 	let p1Win = 0;
@@ -76,13 +98,13 @@ $(document).ready(function(){
 		let myCodeKey = getSecretKey(randArray, colorCodes);
 		for(let i = 0; i<25; ++i){
 			$boardArray[i] = $('<div/>');
-			$($boardArray[i]).text(wordArray[randArray[i]]).addClass(myCodeKey[i] + ' card');
+			$($boardArray[i]).html('<span>' + wordArray[randArray[i]] + '</span>').addClass(myCodeKey[i] + ' card');
 			$('#gameBoard').append($($boardArray[i]));
 			$($boardArray[i]).click(function(){
-				console.log('clicked ' + $($boardArray[i]).text());
+				console.log('clicked ' + $($boardArray[i]).text() + ' B?: ' + $($boardArray[i]).hasClass('B') +' R?: ' + $($boardArray[i]).hasClass('R'));
 				// do other stuff here!
 			});
 		}
 	}
-	makeGameBoard(makeRandArray(7136946447));
+	makeGameBoard(makeRandArray(randomSeed));
 });
