@@ -8,17 +8,21 @@ $(document).ready(function(){
 	let p1Win = 0;
 	let p2Win = 0;
 	let randomSeed = Math.floor(Math.random()*100000000);
+	let boardArray = [];
 	function Card(word, rank, secretColor){
-		this.word = word;
-		this.rank = rank;
-		this.secretColor = secretColor;
+		$(this).word = word;
+		$(this).rank = rank;
+		$(this).secretColor = secretColor;
 	}
 
 	Card.prototype.flipIt = function(){
 		// do stuff to flip this element.  show secret value.  add animation
 	};
 
-	// making the array that will randomize gameboard and colorcodeArray
+	// making the array that will 'randomize' gameboard and colorcodeArray using a seed.  
+	// this allows different devices to get the same gameboard if they type in the seed.
+	// changed random logic to ensure we're not picking the same word twice.
+	// shouldn't affect the 'randomness' of the colorCode logic
 	function makeRandArray(mySeed){
 		let myRandArray = [];
 		let newRand;
@@ -28,19 +32,47 @@ $(document).ready(function(){
 		// 	newRand = newRand - Math.floor(newRand);
 		// 	myRandArray.push(newRand);
 		// }
-		while(iterator<50){
+		while(myRandArray.length<50){
 			newRand = Math.sin(mySeed + iterator) * 10000;
-			newRand = (newRand - Math.floor(newRand))*wordArray.length;
+			newRand = Math.floor((newRand - Math.floor(newRand))*wordArray.length);
+			console.log(newRand);
 			if(!myRandArray.includes(newRand)){
 				myRandArray.push(newRand);
-				iterator++;
 			}
+			iterator++;
 		}
-		console.log(myRandArray);
 		return(myRandArray);
 	}
-
+	function getSecretKey(myArray, myCodes){
+		for(let i = 25;i<myArray.length;++i){
+			for(let j = i+1; j<myArray.length;++j){
+				if(myArray[j]<myArray[i]){
+					let holder = myArray[j];
+					myArray[j] = myArray[i];
+					myArray[i] = holder;
+					holder = myCodes[j-25];
+					myCodes[j-25] = myCodes[i-25];
+					myCodes[i-25] = holder;
+				}
+			}
+		}
+		console.log(myCodes);
+		console.log(myArray);
+		return myCodes;
+	}
+// the first 25 numbers inthe array of 50 will determine the words on the gameboard.  The next 25 will determine the secret code;
+// If the first number in the array is odd, team1(red) starts.  If even, team2(blue) does;
 	function makeGameBoard(randArray){
+		if(randArray[0]%2 ===1){
+			console.log('red goes first');
+			colorCodes.push('R');
+		} else{
+			console.log('blue goes first');
+			colorCodes.push('B');
+		}
+		let myKey = getSecretKey(randArray, colorCodes);
+		for(let i = 0; i<25; ++i){
 
+		}
 	}
 });
