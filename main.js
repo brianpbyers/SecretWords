@@ -31,31 +31,18 @@ $(document).ready(function(){
 	let p2Win = 0;
 	// let randomSeed = Math.floor(Math.random()*100000000);
 	let randomSeed = Number(localStorage.getItem("seed"));
-	console.log('random seed' + randomSeed);
+	// console.log('random seed' + randomSeed);
 	let $boardArray = [];
-	// function Card(word, secretColor){
-	// 	this.word = word;
-	// 	this.secretColor = secretColor;
-	// }
-
-	// Card.prototype.flipIt = function(){
-	// 	// do stuff to flip this element.  show secret value.  add animation
-	// };
 
 	// making the array that will 'randomize' gameboard and colorcodeArray using a seed.  
 	// this allows different devices to get the same gameboard if they type in the seed.
 	// changed random logic to ensure we're not picking the same word twice.
 	// shouldn't affect the 'randomness' of the colorCode logic
 	function makeRandArray(mySeed){
-		console.log('making Random Array');
+		// console.log('making Random Array');
 		let myRandArray = [];
 		let newRand;
 		let iterator = 0;
-		// for(let i = 0; i<50;++i){
-		// 	newRand = Math.sin(mySeed + i) * 10000;
-		// 	newRand = newRand - Math.floor(newRand);
-		// 	myRandArray.push(newRand);
-		// }
 		while(myRandArray.length<50){
 			newRand = Math.sin(mySeed + iterator) * 10000;
 			newRand = Math.floor((newRand - Math.floor(newRand))*wordArray.length);
@@ -64,7 +51,7 @@ $(document).ready(function(){
 			}
 			iterator++;
 		}
-		console.log('Random Array: ' + myRandArray);
+		// console.log('Random Array: ' + myRandArray);
 		return(myRandArray);
 	}
 	// generating a secret key by taking the back 25 of the random array and sorting them (and the color array) based on their values
@@ -82,19 +69,19 @@ $(document).ready(function(){
 				}
 			}
 		}
-		console.log('my Colors ' + myColors);
-		console.log('my Array ' + myArray);
+		// console.log('my Colors ' + myColors);
+		// console.log('my Array ' + myArray);
 		return myColors;
 	}
 // the first 25 numbers inthe array of 50 will determine the words on the gameboard.  The next 25 will determine the secret code;
-// If the first number in the array is odd, team1(red) starts.  If even, team2(blue) does;
+// If the randomSeed is odd, team1(red) starts.  If even, team2(blue) does;
 	function makeGameBoard(randArray){
-		console.log('making Game Board');
-		if(randArray[0]%2 ===1){
-			console.log('red goes first');
+		// console.log('making Game Board');
+		if(randomSeed%2 ===1){
+			// console.log('red goes first');
 			colorCodes.push('R');
 		} else{
-			console.log('blue goes first');
+			// console.log('blue goes first');
 			colorCodes.push('B');
 		}
 		let myCodeKey = getSecretKey(randArray, colorCodes);
@@ -104,7 +91,8 @@ $(document).ready(function(){
 			$('#gameBoard').append($($boardArray[i]));
 			$($boardArray[i]).click(function(){
 				console.log('clicked ' + $($boardArray[i]).text() + ' B?: ' + $($boardArray[i]).hasClass('B') +' R?: ' + $($boardArray[i]).hasClass('R'));
-				// do other stuff here!
+				flip($boardArray[i]);
+				setTimeout(checkForWin(),1500);
 			});
 		}
 	}
