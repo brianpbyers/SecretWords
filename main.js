@@ -1,3 +1,4 @@
+// This is the logic for the gameBoard
 console.log("this is initializing game logic");
 $(document).ready(function(){
 	// HOLY WORD LIST!
@@ -28,7 +29,8 @@ $(document).ready(function(){
 	let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B','T','T','T','T','T','T','T','X'];
 	let p1Win = 0;
 	let p2Win = 0;
-	let randomSeed = Math.floor(Math.random()*100000000);
+	// let randomSeed = Math.floor(Math.random()*100000000);
+	let randomSeed = Number(localStorage.getItem("seed"));
 	console.log('random seed' + randomSeed);
 	let $boardArray = [];
 	// function Card(word, secretColor){
