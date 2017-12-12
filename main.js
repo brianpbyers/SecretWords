@@ -29,13 +29,16 @@ let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B
 	// changed random logic to ensure we're not picking the same word twice.
 	// shouldn't affect the 'randomness' of the colorCode logic
 	function makeRandArray(mySeed){
-		// console.log('making Random Array');
+		console.log('making Random Array using seed: ' + mySeed);
 		let myRandArray = [];
 		let newRand;
 		let iterator = 0;
 		while(myRandArray.length<50){
+			// console.log('Math.sin of ' + mySeed + ' + ' + iterator + ' is ' + Math.sin(mySeed + iterator));
 			newRand = Math.sin(mySeed + iterator) * 10000;
+			// console.log(newRand);
 			newRand = Math.floor((newRand - Math.floor(newRand))*wordArray.length);
+			// console.log(newRand);
 			if(!myRandArray.includes(newRand)){
 				myRandArray.push(newRand);
 			}
@@ -65,7 +68,7 @@ let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B
 	}
 
 
-// commenting these words out.  These are long words that don't show up correctly on the game page
+// commenting these words out.  These are long words that don't show up correctly on the game page josh had a good idea for putting them on.  *stretchgoal
 // ICE CREAM', 'AUSTRALIA', 'LIMOUSINE', 'UNDERTAKER', 'HIMALAYAS', 'WASHINGTON', 'SATTELITE', 'HOLLYWOOD', 
 // 'SKYSCRAPER', 'SUPERHERO', 'CONDUCTOR', 'SCIENTIST', 'AMBULANCE', 'LOCH NESS', 'PARACHUTE', 'SCUBA DIVER', 
 // 'ANARCTICA', 'HELICOPTER', 'TELESCOPE', 'CHOCOLATE', 'HORSESHOE', 'REVOLUTION', 'LEPRECHAUN', 

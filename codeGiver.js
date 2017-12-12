@@ -1,25 +1,13 @@
-console.log("this is initializing codeGiver logic");
+console.log("this is initializing codeGiver logic.  main.js should be loaded prior to using this.");
 $(document).ready(function(){
+	$('#clicker').click(function(event){
+		// didn't realize this wasn't returning a number.  Number corrected this.
+		let randSeed = Number($('#seedEntry').val());
+		randArray = makeRandArray(randSeed);
+		// console.log(randArray);
+		mySecretKey = getSecretKey(randArray, colorCodes);
+		firstWord = wordArray[randArray[0]];
+		alert(firstWord + ' should be the first word on the gameBoard.  If not, refresh this page and re-enter the secret key!');
 
-
-	function makeRandArray(mySeed){
-		// console.log('making Random Array');
-		let myRandArray = [];
-		let newRand;
-		let iterator = 0;
-		while(myRandArray.length<50){
-			newRand = Math.sin(mySeed + iterator) * 10000;
-			newRand = Math.floor((newRand - Math.floor(newRand))*wordArray.length);
-			if(!myRandArray.includes(newRand)){
-				myRandArray.push(newRand);
-			}
-			iterator++;
-		}
-		// console.log('Random Array: ' + myRandArray);
-		return(myRandArray);
-	}
-	$('clicker').click(function(event){
-		let randSeed = $('seedEntry').val();
-		console.log(randSeed);
 	});
 });
