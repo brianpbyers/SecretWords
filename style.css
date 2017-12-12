@@ -49,6 +49,12 @@ body {
 	height: 85vh;
 }
 
+.card {
+	width: 20%;
+	height: 20%;
+	float:left;
+}
+
 .card:hover {
 	box-shadow: 0px 0px 10px 10px yellow;
 }
