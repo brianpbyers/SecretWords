@@ -84,5 +84,5 @@ $(document).ready(function(){
 			});
 		}
 	}
-	makeGameBoard(makeRandArray(7136946447);
+	makeGameBoard(makeRandArray(7136946447));
 });
