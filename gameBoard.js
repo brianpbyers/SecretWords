@@ -38,26 +38,26 @@ $(document).ready(function(){
 // changes whos turn it is.  changes the endTurn button back into a submit button
 	function changeTurn(){
 		canFlip = false;
+		keepGuessing = false;
 		console.log('changeTurn Triggered');
 		$('#code').toggleClass('redTurn blueTurn');
 		whosUp = whosTurn();
 		$('#code').text(whosUp + 's Turn');
 		alert(whosUp + ", it is your turn now!");
-		$('#submitSecrets').removeClass('endTurn').text("submit");
+		submitSecrets();
 
 	}
 
 // creates the endTurnButton and functionality.  will only be called after submit.
 	function endTurnButton(){
 		console.log('endTurnButton Triggered');
-		$('#submitSecrets').addClass('endTurn').text("STOP");
+		$('#submitSecrets').addClass('endTurn').text("STOP").off('click');;
 		$('#submitSecrets').one('click', function(){
 			console.log('endTurn Button Click Triggered');
 			guesses = 0;
 			canFlip = false;
 			keepGuessing = false;
 			changeTurn();
-			submitSecrets();
 		});
 	}
 
@@ -89,12 +89,10 @@ $(document).ready(function(){
 				if(!guesses){
 					console.log('no more guesses');
 					changeTurn();
-					endTurnButton();
-					$('$submitSecrets').trigger('click');
 				}
 			} else if (!rightTeamFlipped($thisCard)){
 				alert("You flipped an incorrect card!");
-				setTimeout(function(){$('#submitSecrets').trigger('click');}, 800);
+				setTimeout(function(){changeTurn();}, 800);
 			}
 		} else{
 			alert("You've got to enter a Clue!");
@@ -105,9 +103,9 @@ $(document).ready(function(){
 // game requires a word and number to be given to the rest of the team by the code giver.  If number = 0, unlimited guesses until team decides to stop.  
 // Team is not required to use all guesses
 function submitSecrets(){
-	$('#submitSecrets').removeClass('endTurn').text("Submit");
+	$('#submitSecrets').removeClass('endTurn').text("Submit").off('click');
 	$('#submitSecrets').one('click',function(){
-			let secretWord = $('#secretWord').val();
+			let secretWord = $('#secretWord').val().toUpperCase();
 			console.log(secretWord + " secret Word");
 			let secretNumber = Number($('#secretNumber').val());
 			console.log(secretNumber + " secretNumber");
@@ -144,7 +142,7 @@ function submitSecrets(){
 		} else{
 			// console.log('blue goes first');
 			colorCodes.push('B');
-			blueWin++
+			blueWin++;
 			$('#code').addClass('blueTurn').text("Blue will go first");
 
 		}

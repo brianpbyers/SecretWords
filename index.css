@@ -1,0 +1,20 @@
+body {
+	font-size: sans-serif;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background-image: url("assets/spyHomePageBG.png");
+	background-size: 100% 130%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+h1{
+	margin: 0 auto;
+	margin-top: 15vh;
+	width: 40vw;
+	font-size: 6vw;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
