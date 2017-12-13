@@ -1,7 +1,17 @@
 body {
 	font-family: sans-serif;
+	margin: 0;
+	background-color: #222;
 }
 
+h1{
+	margin: 0;
+	padding-top: 2vh;
+	max-height: 20vh;
+	text-align: center;
+	font-size: 16vh;
+	color: white;
+}
 /*keeping everything on the same page.  trying to hide it with JQuery the correct code has been given*/
 .before {
 	margin: 0;
@@ -12,7 +22,7 @@ body {
 
 #textEntry {
 	width: 34vw;
-	padding-top: 30vh;
+	padding-top: 20vh;
 	margin: 0 auto; 
 	color: white;
 }
@@ -36,14 +46,15 @@ label {
 	background-color:white;
 	border: .2vh solid black;
 	border-radius: 3vh;
-	padding: 1vh;
-	width: 12vw;
+	padding: 1.5vh;
+	width: 20vw;
 }
 
 /*once correct code has been given, codeBoard will be initialized*/
 .after {
-	margin: 0;
+	margin: 0 auto;
 	display: none;
+	max-width: 100vh;
 	width: 100vw;
 	height: 100vh;
 	background-color: #333;
@@ -52,6 +63,7 @@ label {
 
 .card {
 	float: left;
+	max-width:15vh;
 	width: 18vw;
 	height: 15vh;
 	margin: 1vh 1vw;

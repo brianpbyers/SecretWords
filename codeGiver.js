@@ -24,6 +24,7 @@ $(document).ready(function(){
 			});
 	});
 
+// removes the entry area and gives a visual representation of the secretKey.  Should be identical to the gameBoard's underlying values
 	function makeCodeBoard(mySecretKey){
 		$('.before').hide();
 		$('.after').show();
