@@ -42,7 +42,8 @@ label {
 
 /*once correct code has been given, codeBoard will be initialized*/
 .after {
-	display: hidden;
+	margin: 0;
+	display: none;
 	width: 100vw;
 	height: 100vh;
 	background-color: #333;
