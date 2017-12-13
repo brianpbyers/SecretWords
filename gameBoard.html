@@ -10,9 +10,15 @@
 <!-- 		teamDisplays will hold all team-relevant information.  For now, their score.  Stretch: previous words given and guesses formatted well. -->
 		<div id = "team1" class = "teamDisplay">SCUBA DIVER</div>
 <!-- 		code will display the most recent code given as well as the number -->
-		<div id = "code">SecretWord:</div>
+		<div id = "code"></div>
 		<div id = "team2" class = "teamDisplay">SCUBA DIVER</div>
-		<div id = "entry">There will be a text entry box, a selector, and a submit</div>
+		<div id = "entry">
+			<div class = "label">Enter word:</div>
+			<input type = "password" id = "secretWord">
+			<div class = "label">Enter number:</div>
+			<input type = "number" id = "secretNumber">
+			<div id = "submitSecrets"> Submit</div>
+		</div>
 <!-- 		gameboard will hold all 25 card objects -->
 		<div id = "gameBoard"></div>
 	</div>

@@ -3,14 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Code Key!</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="codeGiver.css">
 </head>
 <body>
 <!-- 	page starts by asking for the number to generate the code.  will become hidden after verification -->
 	<div class = "before">
-		<label for = "seedEntry">Enter Number Here</label>
-		<input type = 'number' id = "seedEntry">
-		<div id = clicker>Enter</div>
+		<div id = "textEntry">
+			<label for = "seedEntry">Access Code: </label>
+			<input type = 'number' id = "seedEntry">
+		</div>
+		<div id = clicker>Verify Access Code</div>
+	</div>
+	<div  id = "codeBoard" class = "after">
+		<h1>Code Board</h1>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	links the words array instead of writing it and changing it every time I update the words in 3 places -->	

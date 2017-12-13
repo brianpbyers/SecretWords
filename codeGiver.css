@@ -1,0 +1,79 @@
+body {
+	font-family: sans-serif;
+}
+
+/*keeping everything on the same page.  trying to hide it with JQuery the correct code has been given*/
+.before {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #444;
+}
+
+#textEntry {
+	width: 34vw;
+	padding-top: 30vh;
+	margin: 0 auto; 
+	color: white;
+}
+
+label {
+	margin: 0 auto;
+}
+
+#seedEntry {
+	clear:right;
+	margin: 0 auto;
+	text-align: center;
+	background-color: white;
+	height: 4vh;
+	font-size: 3vh;
+}
+
+#clicker {
+	margin: 5vh auto;
+	text-align: center;
+	background-color:white;
+	border: .2vh solid black;
+	border-radius: 3vh;
+	padding: 1vh;
+	width: 12vw;
+}
+
+/*once correct code has been given, codeBoard will be initialized*/
+.after {
+	display: hidden;
+	width: 100vw;
+	height: 100vh;
+	background-color: #333;
+	color: white;
+}
+
+.card {
+	float: left;
+	width: 18vw;
+	height: 15vh;
+	margin: 1vh 1vw;
+	border-radius: 1vw;
+}
+
+.B {
+	background-color: #3645d1;
+}
+
+.R {
+	background-color: #d13636;
+}
+
+.T {
+	background-color: beige;
+}
+
+.X {
+	background-color: black;
+	content: "X";
+	font-size: 10vh;
+	text-align: center;
+	padding: 2.5vh auto;
+	color: white;
+}
