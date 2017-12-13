@@ -29,7 +29,7 @@ $(document).ready(function(){
 			alert("Blue Team Wins!");
 		}else if($('.X').hasClass('flipped')) {
 			let whosUp = whosTurn();
-			alert(whosUp + "flipped the Black Card!  They Lose!");
+			alert(whosUp + " flipped the Black Card!  They Lose!");
 		}
 
 	}
