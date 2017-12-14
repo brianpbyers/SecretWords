@@ -62,7 +62,7 @@ function popUpMsg(myString, myTime){
 		$('#code').toggleClass('redTurn blueTurn');
 		whosUp = whosTurn();
 		$('#code').text(whosUp + 's Turn');
-		popUpMsg((whosUp + ", it is your turn now!"), 3000);
+		popUpMsg((whosUp + ", it is your turn now!"), 2000);
 		submitSecrets();
 
 	}
@@ -93,7 +93,7 @@ function popUpMsg(myString, myTime){
 			newWord = wordArray[randArray[0]];
 			$('#gameOver').text("Teams:  Choose new Code Givers.  Your new code is: " + randomSeed + ".  The verification word should be: " + newWord);
 			$('#gameOver').one('click', function(){
-				$('#gameOver').hide();
+				$('#gameOver').empty().off().hide();
 				$('#gameBoard').empty();
 				$('#blueWords').empty();
 				$('#redWords').empty();
@@ -110,19 +110,19 @@ function popUpMsg(myString, myTime){
 			$($thisCard).addClass('flipped');
 			$($thisCard).empty();
 			if($('.R.flipped').length===redWin) {
-				popUpMsg("Red Team Wins!", 5000);
+				popUpMsg("Red Team Wins!", 3000);
 				gameOver('redTeam');
 				console.log('still in it');
 				return;
 			} else if($('.B.flipped').length===blueWin) {
-				popUpMsg("Blue Team Wins!", 5000);
+				popUpMsg("Blue Team Wins!", 3000);
 				gameOver('blueTeam');
 				console.log('still in it');
 				return;
 			}else if($('.X').hasClass('flipped')) {
 				let whosUp = whosTurn();
-				setTimeout(function(){popUpMsg((whosUp + " flipped the Black Card!  They Lose!"),5000);},800);
-				console.log(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
+				setTimeout(function(){popUpMsg((whosUp + " flipped the Black Card!  They Lose!"),3000);},400);
+				console.log(whosUp === 'Red Team]' ? 'blueTeam' : 'redTeam');
 				gameOver(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
 			}
 			if(guesses !== 0 && rightTeamFlipped($thisCard)){
@@ -133,11 +133,11 @@ function popUpMsg(myString, myTime){
 					changeTurn();
 				}
 			} else if (!rightTeamFlipped($thisCard)){
-				popUpMsg("You flipped an incorrect card!", 2000);
-				setTimeout(function(){changeTurn();}, 2000);
+				popUpMsg("You flipped an incorrect card!", 1500);
+				setTimeout(function(){changeTurn();}, 1500);
 			}
 		} else{
-			popUpMsg("You've got to enter a Clue!", 2000);
+			popUpMsg("You've got to enter a Clue!", 1500);
 		}
 
 	}
@@ -174,7 +174,7 @@ function submitSecrets(){
 			endTurnButton();
 		} else {
 			console.log("nothing detected");
-			popUpMsg("You need to enter a word and number!", 2000);
+			popUpMsg("You need to enter a word and number!", 1500);
 			submitSecrets();
 		}
 	});
@@ -205,7 +205,7 @@ function submitSecrets(){
 				if(!$(this).hasClass('flipped')){
 					flip($boardArray[i]);
 				} else {
-					popUpMsg("This card has already been flipped.  Please select another one", 2500);
+					popUpMsg("This card has already been flipped.  Please select another one", 2000);
 
 				}
 			});
