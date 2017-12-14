@@ -25,12 +25,24 @@ $(document).ready(function(){
 		makeGameBoard(makeRandArray(randomSeed));
 	}
 
+
 // gets rid of alerts
 function popUpMsg(myString, myTime){
 	// console.log('popUp initialized' + myString);
 	$('#popUp').text(myString).show();
-	setTimeout(function(){$('#popUp').hide();}, myTime||1000);
+	$('#popUp').one('click',function(){
+		$('#popUp').hide();
+	});
+	setTimeout(function(){
+		$('#popUp').hide().off();
+	}, myTime||1000);
 }
+
+// displays code on click
+$('#code').click(function(){
+	console.log('in click fx!');
+	popUpMsg(("Code: " + randomSeed + ".   Word: " + wordArray[makeRandArray(randomSeed)[0]]), 10000);
+});
 
 // returns string-value of whos turn it is
 	function whosTurn(){
