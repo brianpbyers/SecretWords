@@ -24,12 +24,6 @@ let wordArray = ['FACE', 'BERLIN', 'POUND', 'SUB', 'WATCH', 'LEAD', 'RABBIT', 'C
 
 let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B','T','T','T','T','T','T','T','X'];
 
-let var isMobile = false;
-// found this after some extensive searching.  mobile devices don't like modals
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	isMobile = true;
-}
-
 	// making the array that will 'randomize' gameboard and colorcodeArray using a seed.  
 	// this allows different devices to get the same gameboard if they type in the seed.
 	// changed random logic to ensure we're not picking the same word twice.
@@ -73,16 +67,6 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 		return myColors;
 	}
 
-// gets rid of alerts in favor of modals using dialog box ONLY if in browser mode
-function popUpMsg(myString, myTime){
-	if(isMobile){
-		alert(myString);
-	}else {
-		console.log('popUp initialized' + myString);
-		$('#popUp').text(myString).show();
-		setTimeout(function(){$('#popUp').hide();}, myTime||1000);
-	}
-}
 // commenting these words out.  These are long words that don't show up correctly on the game page josh had a good idea for putting them on.  *stretchgoal
 // ICE CREAM', 'AUSTRALIA', 'LIMOUSINE', 'UNDERTAKER', 'HIMALAYAS', 'WASHINGTON', 'SATTELITE', 'HOLLYWOOD', 
 // 'SKYSCRAPER', 'SUPERHERO', 'CONDUCTOR', 'SCIENTIST', 'AMBULANCE', 'LOCH NESS', 'PARACHUTE', 'SCUBA DIVER', 

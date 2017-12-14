@@ -25,6 +25,12 @@ $(document).ready(function(){
 		makeGameBoard(makeRandArray(randomSeed));
 	}
 
+// gets rid of alerts
+function popUpMsg(myString, myTime){
+	// console.log('popUp initialized' + myString);
+	$('#popUp').text(myString).show();
+	setTimeout(function(){$('#popUp').hide();}, myTime||1000);
+}
 
 // returns string-value of whos turn it is
 	function whosTurn(){
@@ -79,7 +85,7 @@ $(document).ready(function(){
 		// console.log(score);
 		score++;
 		Number($('#'+whoWon+'Score').text(score));
-		$('#gameOver').show();
+		$('#gameOver').css('display','block').show();
 		$('#gameOver').one('click', function(){
 			randomSeed = Math.floor(Math.random()*10000000000);
 			localStorage.setItem("seed", randomSeed);
@@ -87,7 +93,7 @@ $(document).ready(function(){
 			newWord = wordArray[randArray[0]];
 			$('#gameOver').text("Teams:  Choose new Code Givers.  Your new code is: " + randomSeed + ".  The verification word should be: " + newWord);
 			$('#gameOver').one('click', function(){
-				$('#gameOver').empty().off().hide();
+				$('#gameOver').empty().off().css('display','none').hide();
 				$('#gameBoard').empty();
 				$('#blueWords').empty();
 				$('#redWords').empty();

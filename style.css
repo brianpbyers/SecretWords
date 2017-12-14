@@ -17,9 +17,10 @@ body {
 }
 
 #gameOver {
-	width: 100vw;
+	display: none;
+	width: 70vw;
 	height: 100vh;
-	padding: 8vh 0;
+	padding: 8vh 15vw;
 	font-size: 8vh;
 	text-align: center;
 	color:white;
