@@ -6,7 +6,32 @@
 
 [Game Board WireFrame](https://wireframe.cc/EtHVJS)
 
-### Technologies used: JQuery for DOM Manipulation, HTML, CSS, Javascript for logic
+***
+### Technologies used: 
+#### HTML 
+#### CSS 
+#### Javascript for logic
+#### JQuery for DOM Manipulation
+#### Trello Boards
+#### GitHub & GitHub Pages
+***
+###Constraints
+#### Technological:
+##### No servers to link game board and code boards together.  
+##### JS does not have random number seeds - had to create.
+##### Modals are difficult to create for iOS.
+
+#### Time:
+##### Not enough time to playtest the game in a real setting.  UI untested in real life
+
+#### Content:
+##### Images on real game not easily accessible.  Had to design own
+
+### TO DO List
+Add an animation or object constructor
+Put files in folders
+GET CARD FLIPS TO WORK!!!!
+
 
 
 ***
