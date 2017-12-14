@@ -6,11 +6,11 @@
 
 [Game Board WireFrame](https://wireframe.cc/EtHVJS)
 
-###Technologies used: JQuery for DOM Manipulation, HTML, CSS, Javascript for logic
+### Technologies used: JQuery for DOM Manipulation, HTML, CSS, Javascript for logic
 
 
 ***
-###How to Play:
+### How to Play:
 
 
 Game requires at least 2 screens to play.  Preferably at least one large screen.
