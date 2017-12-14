@@ -11,4 +11,6 @@ One screen must be dedicated to the game board.  This is where all action will h
 
 All screens navigate to the main landing page (index.html).  Game Board:  do not move from this screen yet!
 
-Code Givers: click where prompted, then enter the secret number where prompted.
+Code Givers: click where prompted, then enter the secret number where prompted.  Check to ensure the word in the green box matches the word under the secret number.  If not, refresh the page and enter the number again.
+
+Once Code Givers say they are ready, go ahead and head to the Game Board.  Whichever team is selected to start 

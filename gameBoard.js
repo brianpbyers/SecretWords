@@ -1,5 +1,5 @@
 // This is the logic for the gameBoard
-console.log("this is initializing game logic.  main.js should be loaded prior to this.");
+// console.log("this is initializing game logic.  main.js should be loaded prior to this.");
 $(document).ready(function(){
 	let redWin = 8;
 	let blueWin = 8;
@@ -25,16 +25,10 @@ $(document).ready(function(){
 		makeGameBoard(makeRandArray(randomSeed));
 	}
 
-function popUpMsg(myString, myTime){
-	console.log('popUp initialized' + myString);
-	$('#popUp').text(myString).show();
-	setTimeout(function(){$('#popUp').hide();}, myTime||1000);
-}
-
 
 // returns string-value of whos turn it is
 	function whosTurn(){
-		console.log('whosTurn Triggered');
+		// console.log('whosTurn Triggered');
 		if($('#code').hasClass('redTurn')){
 			return 'Red Team';
 		}else if($('#code').hasClass('blueTurn')){
@@ -46,7 +40,7 @@ function popUpMsg(myString, myTime){
 
 // determines if the correct team flipped the correct card. returns boolean
 	function rightTeamFlipped($thisCard){
-		console.log('rightTeamFlipped Triggered');
+		// console.log('rightTeamFlipped Triggered');
 		if(($('#code').hasClass('redTurn') && $($thisCard).hasClass('R'))||($('#code').hasClass('blueTurn') && $($thisCard).hasClass('B'))){
 			return true;
 		}else {
@@ -58,10 +52,10 @@ function popUpMsg(myString, myTime){
 	function changeTurn(){
 		canFlip = false;
 		keepGuessing = false;
-		console.log('changeTurn Triggered');
+		// console.log('changeTurn Triggered');
 		$('#code').toggleClass('redTurn blueTurn');
 		whosUp = whosTurn();
-		$('#code').text(whosUp + 's Turn');
+		$('#code').text(whosUp + "'s Turn");
 		popUpMsg((whosUp + ", it is your turn now!"), 2000);
 		submitSecrets();
 
@@ -69,10 +63,10 @@ function popUpMsg(myString, myTime){
 
 // creates the endTurnButton and functionality.  will only be called after submit.
 	function endTurnButton(){
-		console.log('endTurnButton Triggered');
+		// console.log('endTurnButton Triggered');
 		$('#submitSecrets').addClass('endTurn').text("STOP").off('click');
 		$('#submitSecrets').one('click', function(){
-			console.log('endTurn Button Click Triggered');
+/*			console.log('endTurn Button Click Triggered');*/
 			guesses = 0;
 			canFlip = false;
 			keepGuessing = false;
@@ -82,7 +76,7 @@ function popUpMsg(myString, myTime){
 // ends the game.  puts a dialog box over the game with a button to restart the game (so people can take a last look at the game board)
 	function gameOver(whoWon){
 		score = Number($('#'+whoWon+'Score').text());
-		console.log(score);
+		// console.log(score);
 		score++;
 		Number($('#'+whoWon+'Score').text(score));
 		$('#gameOver').show();
@@ -105,39 +99,39 @@ function popUpMsg(myString, myTime){
 
 // flips the card if valid, checks for win, checks for correct card picked
 	function flip($thisCard){
-		console.log('flip triggered');
+		// console.log('flip triggered');
 		if(canFlip){
 			$($thisCard).addClass('flipped');
 			$($thisCard).empty();
 			if($('.R.flipped').length===redWin) {
-				popUpMsg("Red Team Wins!", 3000);
+				popUpMsg("Red Team Wins!", 2000);
 				gameOver('redTeam');
-				console.log('still in it');
+				// console.log('still in it');
 				return;
 			} else if($('.B.flipped').length===blueWin) {
-				popUpMsg("Blue Team Wins!", 3000);
+				popUpMsg("Blue Team Wins!", 2000);
 				gameOver('blueTeam');
-				console.log('still in it');
+				// console.log('still in it');
 				return;
 			}else if($('.X').hasClass('flipped')) {
 				let whosUp = whosTurn();
 				setTimeout(function(){popUpMsg((whosUp + " flipped the Black Card!  They Lose!"),3000);},400);
-				console.log(whosUp === 'Red Team]' ? 'blueTeam' : 'redTeam');
+				// console.log(whosUp === 'Red Team]' ? 'blueTeam' : 'redTeam');
 				gameOver(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
 			}
 			if(guesses !== 0 && rightTeamFlipped($thisCard)){
-				console.log('guesses less than and guessed correctly');
+				// console.log('guesses less than and guessed correctly');
 				--guesses;
 				if(!guesses){
-					console.log('no more guesses');
+					// console.log('no more guesses');
 					changeTurn();
 				}
 			} else if (!rightTeamFlipped($thisCard)){
-				popUpMsg("You flipped an incorrect card!", 1500);
-				setTimeout(function(){changeTurn();}, 1500);
+				popUpMsg("You flipped an incorrect card!", 1000);
+				setTimeout(function(){changeTurn();}, 1000);
 			}
 		} else{
-			popUpMsg("You've got to enter a Clue!", 1500);
+			popUpMsg("Enter a Clue!", 1000);
 		}
 
 	}
@@ -148,10 +142,10 @@ function submitSecrets(){
 	$('#submitSecrets').removeClass('endTurn').text("Submit").off('click');
 	$('#submitSecrets').one('click',function(){
 			let secretWord = $('#secretWord').val().toUpperCase();
-			console.log(secretWord + " secret Word");
+			// console.log(secretWord + " secret Word");
 			let secretNumber = Number($('#secretNumber').val());
 			secretNumber = Math.abs(secretNumber);
-			console.log(secretNumber + " secretNumber");
+			// console.log(secretNumber + " secretNumber");
 			newLi = $('<li>').text(secretWord + ", " + secretNumber);
 			if(whosTurn() === 'Red Team'){
 				$('#redWords').prepend(newLi);
@@ -159,21 +153,21 @@ function submitSecrets(){
 				$('#blueWords').prepend(newLi);
 			}
 		if(secretWord && secretNumber){
-			console.log("word and number detected");
+			// console.log("word and number detected");
 			guesses = secretNumber + 1;
 			canFlip = true;
 			keepGuessing = true;
 			$('#code').text(secretWord + ": " + secretNumber);
 			endTurnButton();
 		} else if(secretWord){
-			console.log("Only word detected");
+			// console.log("Only word detected");
 			guesses = -1;
 			canFlip = true;
 			keepGuessing = true;
 			$('#code').text(secretWord + ": " + "0");
 			endTurnButton();
 		} else {
-			console.log("nothing detected");
+			// console.log("nothing detected");
 			popUpMsg("You need to enter a word and number!", 1500);
 			submitSecrets();
 		}
@@ -201,7 +195,7 @@ function submitSecrets(){
 			$($boardArray[i]).html('<span>' + wordArray[randArray[i]] + '</span>').addClass(myCodeKey[i] + ' card');
 			$('#gameBoard').append($($boardArray[i]));
 			$($boardArray[i]).click(function(){
-				console.log('clicked ' + $($boardArray[i]).text() + ' B?: ' + $($boardArray[i]).hasClass('B') +' R?: ' + $($boardArray[i]).hasClass('R'));
+				// console.log('clicked ' + $($boardArray[i]).text() + ' B?: ' + $($boardArray[i]).hasClass('B') +' R?: ' + $($boardArray[i]).hasClass('R'));
 				if(!$(this).hasClass('flipped')){
 					flip($boardArray[i]);
 				} else {

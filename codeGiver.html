@@ -6,16 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="codeGiver.css">
 </head>
 <body>
-		<h1>Code Board</h1>
 <!-- 	page starts by asking for the number to generate the code.  will become hidden after verification -->
 	<div class = "before">
+		<div class = "header">
+			<h1>CODE BOARD</h1>
+		</div>
 		<div id = "textEntry">
 			<label for = "seedEntry">Access Code</label>
 			<input type = "number" id = "seedEntry">
 		</div>
 		<div id = clicker>Verify Access Code</div>
 	</div>
-	<div  id = "codeBoard" class = "after">
+	<div  id = "codePage" class = "after">
+		<div class = "header">
+			<h1>CODE BOARD</h1>
+		</div>
+		<div id = "codeBoard"></div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	links the words array instead of writing it and changing it every time I update the words in 3 places -->	
