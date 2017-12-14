@@ -7,6 +7,7 @@ body {
 	background-size: 100% 130%;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-color: #aaa;
 }
 
 h1 {
@@ -29,7 +30,7 @@ h1 {
 	text-align: center;
 }
 
-#secretSeed {
+.verify {
 	min-width: 60vh;
 	width: 50vw;
 	font-size: 8vh;
@@ -37,6 +38,10 @@ h1 {
 	color: white;
 	text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
 	text-align: center;
+}
+
+#secretWord {
+	font-size: 6vh;
 }
 
 a {
@@ -48,7 +53,7 @@ a {
 	width: 40vw;
 	color: white;
 	text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
-	margin: 10vh auto 0 auto;
+	margin: 5vh auto 0 auto;
 }
 
 a:hover {

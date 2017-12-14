@@ -6,12 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<dialog id = "popUp"></dialog>
+	<dialog id = "gameOver">The Game is Over.  Please click anywhere to start a new game.</dialog>
 	<div id = "container">
 <!-- 		teamDisplays will hold all team-relevant information.  For now, their score.  Stretch: previous words given and guesses formatted well. -->
-		<div id = "redTeam" class = "teamDisplay">SCUBA DIVER</div>
+		<div id = "redTeam" class = "teamDisplay">
+			<div id = "redTeamScore">0</div>
+			<ul>Red Words</ul>
+			<ul id = "redWords"></ul>
+		</div>
 <!-- 		code will display the most recent code given as well as the number -->
 		<div id = "code"></div>
-		<div id = "blueTeam" class = "teamDisplay">SCUBA DIVER</div>
+		<div id = "blueTeam" class = "teamDisplay">
+			<div id = "redTeamScore">0</div>
+			<ul>Blue Words</ul>
+			<ul id = "blueWords"></ul>
+		</div>
 		<div id = "entry">
 			<div class = "label">Word:</div>
 			<input type = "password" id = "secretWord">

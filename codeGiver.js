@@ -17,7 +17,7 @@ $(document).ready(function(){
 		}
 		mySecretKey = getSecretKey(randArray, colorCodes);
 		firstWord = wordArray[randArray[0]];
-		alert(firstWord + ' should be the first word on the gameBoard.  If not, refresh this page and re-enter the secret key!');
+		alert(firstWord + ' should be the word on the home page, or first word on the Game Board.  If not, refresh this page and re-enter the secret key!');
 		$('#clicker').text(firstWord + " is correct").css("background-color","green").css("color","white").off();
 		$('#clicker').click(function(){
 				makeCodeBoard(mySecretKey);

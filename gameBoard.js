@@ -1,7 +1,6 @@
 // This is the logic for the gameBoard
 console.log("this is initializing game logic.  main.js should be loaded prior to this.");
 $(document).ready(function(){
-	// cards left until win
 	let redWin = 8;
 	let blueWin = 8;
 	let guesses = 0;
@@ -11,6 +10,26 @@ $(document).ready(function(){
 	let randomSeed = Number(localStorage.getItem("seed"));
 	// console.log('random seed' + randomSeed);
 	let $boardArray = [];
+
+	function initializeGame(){
+		// cards left until win
+		redWin = 8;
+		blueWin = 8;
+		guesses = 0;
+		canFlip = false;
+		keepGuessing = false;
+		// let randomSeed = Math.floor(Math.random()*100000000);
+		randomSeed = Number(localStorage.getItem("seed"));
+		// console.log('random seed' + randomSeed);
+		$boardArray = [];
+		makeGameBoard(makeRandArray(randomSeed));
+	}
+
+function popUpMsg(myString, myTime){
+	console.log('popUp initialized' + myString);
+	$('#popUp').text(myString).show();
+	setTimeout(function(){$('#popUp').hide();}, myTime||1000);
+}
 
 
 // returns string-value of whos turn it is
@@ -43,7 +62,7 @@ $(document).ready(function(){
 		$('#code').toggleClass('redTurn blueTurn');
 		whosUp = whosTurn();
 		$('#code').text(whosUp + 's Turn');
-		alert(whosUp + ", it is your turn now!");
+		popUpMsg((whosUp + ", it is your turn now!"), 3000);
 		submitSecrets();
 
 	}
@@ -51,7 +70,7 @@ $(document).ready(function(){
 // creates the endTurnButton and functionality.  will only be called after submit.
 	function endTurnButton(){
 		console.log('endTurnButton Triggered');
-		$('#submitSecrets').addClass('endTurn').text("STOP").off('click');;
+		$('#submitSecrets').addClass('endTurn').text("STOP").off('click');
 		$('#submitSecrets').one('click', function(){
 			console.log('endTurn Button Click Triggered');
 			guesses = 0;
@@ -59,6 +78,29 @@ $(document).ready(function(){
 			keepGuessing = false;
 			changeTurn();
 		});
+	}
+// ends the game.  puts a dialog box over the game with a button to restart the game (so people can take a last look at the game board)
+	function gameOver(whoWon){
+		score = Number($('#'+whoWon+'Score').text());
+		console.log(score);
+		score++;
+		Number($('#'+whoWon+'Score').text(score));
+		$('#gameOver').show();
+		$('#gameOver').one('click', function(){
+			randomSeed = Math.floor(Math.random()*10000000000);
+			localStorage.setItem("seed", randomSeed);
+			randArray = makeRandArray(randomSeed);
+			newWord = wordArray[randArray[0]];
+			$('#gameOver').text("Teams:  Choose new Code Givers.  Your new code is: " + randomSeed + ".  The verification word should be: " + newWord);
+			$('#gameOver').one('click', function(){
+				$('#gameOver').hide();
+				$('#gameBoard').empty();
+				$('#blueWords').empty();
+				$('#redWords').empty();
+				initializeGame();
+			});
+		});
+
 	}
 
 // flips the card if valid, checks for win, checks for correct card picked
@@ -68,18 +110,18 @@ $(document).ready(function(){
 			$($thisCard).addClass('flipped');
 			$($thisCard).empty();
 			if($('.R.flipped').length===redWin) {
-				alert("Red Team Wins!");
+				popUpMsg("Red Team Wins!", 5000);
 				gameOver('redTeam');
 				console.log('still in it');
 				return;
 			} else if($('.B.flipped').length===blueWin) {
-				alert("Blue Team Wins!");
+				popUpMsg("Blue Team Wins!", 5000);
 				gameOver('blueTeam');
 				console.log('still in it');
 				return;
 			}else if($('.X').hasClass('flipped')) {
 				let whosUp = whosTurn();
-				setTimeout(function(){alert(whosUp + " flipped the Black Card!  They Lose!");},800);
+				setTimeout(function(){popUpMsg((whosUp + " flipped the Black Card!  They Lose!"),5000);},800);
 				console.log(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
 				gameOver(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
 			}
@@ -91,11 +133,11 @@ $(document).ready(function(){
 					changeTurn();
 				}
 			} else if (!rightTeamFlipped($thisCard)){
-				alert("You flipped an incorrect card!");
-				setTimeout(function(){changeTurn();}, 800);
+				popUpMsg("You flipped an incorrect card!", 2000);
+				setTimeout(function(){changeTurn();}, 2000);
 			}
 		} else{
-			alert("You've got to enter a Clue!");
+			popUpMsg("You've got to enter a Clue!", 2000);
 		}
 
 	}
@@ -108,7 +150,14 @@ function submitSecrets(){
 			let secretWord = $('#secretWord').val().toUpperCase();
 			console.log(secretWord + " secret Word");
 			let secretNumber = Number($('#secretNumber').val());
+			secretNumber = Math.abs(secretNumber);
 			console.log(secretNumber + " secretNumber");
+			newLi = $('<li>').text(secretWord + ", " + secretNumber);
+			if(whosTurn() === 'Red Team'){
+				$('#redWords').prepend(newLi);
+			}else {
+				$('#blueWords').prepend(newLi);
+			}
 		if(secretWord && secretNumber){
 			console.log("word and number detected");
 			guesses = secretNumber + 1;
@@ -125,7 +174,7 @@ function submitSecrets(){
 			endTurnButton();
 		} else {
 			console.log("nothing detected");
-			alert("You need to enter a words and numbers!");
+			popUpMsg("You need to enter a word and number!", 2000);
 			submitSecrets();
 		}
 	});
@@ -156,12 +205,12 @@ function submitSecrets(){
 				if(!$(this).hasClass('flipped')){
 					flip($boardArray[i]);
 				} else {
-					alert("This card has already been flipped.  Please select another one");
+					popUpMsg("This card has already been flipped.  Please select another one", 2500);
 
 				}
 			});
 		}
 		submitSecrets();
 	}
-	makeGameBoard(makeRandArray(randomSeed));
+	initializeGame();
 });
