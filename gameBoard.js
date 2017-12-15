@@ -146,31 +146,41 @@ $('#code').click(function(){
 function submitSecrets(){
 	$('#submitSecrets').removeClass('endTurn').text("Submit").off('click');
 	$('#submitSecrets').one('click',function(){
-			let secretWord = $('#secretWord').val().toUpperCase();
-			let secretNumber = Number($('#secretNumber').val());
-			secretNumber = Math.abs(secretNumber);
-			newLi = $('<li>').text(secretWord + ", " + secretNumber);
-			if(whosTurn() === 'Red Team'){
-				$('#redWords').prepend(newLi);
-			}else {
-				$('#blueWords').prepend(newLi);
-			}
-		if(secretWord && secretNumber){
-			guesses = secretNumber + 1;
-			canFlip = true;
-			keepGuessing = true;
-			$('#code').text(secretWord + ": " + secretNumber);
-			endTurnButton();
-		} else if(secretWord){
-			guesses = -1;
-			canFlip = true;
-			keepGuessing = true;
-			$('#code').text(secretWord + ": " + "0");
-			endTurnButton();
-		} else {
-			popUpMsg("You need to enter a word and number!", 1500);
+		let secretWord = $('#secretWord').val().toUpperCase();
+		let secretNumber = Number($('#secretNumber').val());
+		$('#secretWord').val('');
+		$('#secretNumber').val('');
+		secretNumber = Math.abs(secretNumber);
+		newLi = $('<li>').text(secretWord + ", " + secretNumber);
+		if(secretWord.includes(' ')){
+			canFlip = false;
+			popUpMsg("You can only enter ONE word.  Please try again", 1500);
 			submitSecrets();
-		}
+		} else if (!secretWord){
+			popUpMsg("You need to enter a word and number!", 1500);
+			canFlip = false;
+			submitSecrets();
+		}else {
+				if(whosTurn() === 'Red Team'){
+					$('#redWords').prepend(newLi);
+				}else {
+					$('#blueWords').prepend(newLi);
+				}
+				if(secretWord && secretNumber){
+					guesses = secretNumber + 1;
+					canFlip = true;
+					keepGuessing = true;
+					$('#code').text(secretWord + ": " + secretNumber);
+					endTurnButton();
+				} else if(secretWord){
+					guesses = -1;
+					canFlip = true;
+					keepGuessing = true;
+					$('#code').text(secretWord + ": " + "0");
+					endTurnButton();
+				} 
+
+			}
 	});
 }
 
