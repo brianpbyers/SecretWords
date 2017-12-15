@@ -88,8 +88,9 @@ $('#code').click(function(){
 	function gameOver(whoWon){
 		score = Number($('#'+whoWon+'Score').text());
 		score++;
+		console.log(score);
 		Number($('#'+whoWon+'Score').text(score));
-		$('#gameOver').css('display','block').show();
+		$('#gameOver').css('display','block').text("The Game is Over.  Please click anywhere to start a new game.").show();
 		$('#gameOver').one('click', function(){
 			randomSeed = Math.floor(Math.random()*10000000000);
 			localStorage.setItem("seed", randomSeed);
@@ -111,6 +112,7 @@ $('#code').click(function(){
 // flips the card if valid, checks for win, checks for correct card picked
 	function flip($thisCard){
 		if(canFlip){
+			--guesses;
 			$($thisCard).addClass('flipped');
 			$($thisCard).empty();
 			if($('.R.flipped').length===redWin) {
@@ -126,14 +128,11 @@ $('#code').click(function(){
 				setTimeout(function(){popUpMsg((whosUp + " flipped the Black Card!  They Lose!"),3000);},400);
 				gameOver(whosTurn() === 'Red Team' ? 'blueTeam' : 'redTeam');
 			}
-			if(guesses !== 0 && rightTeamFlipped($thisCard)){
-				--guesses;
-				if(!guesses){
-					changeTurn();
-				}
-			} else if (!rightTeamFlipped($thisCard)){
+			if (!rightTeamFlipped($thisCard)){
 				popUpMsg("You flipped an incorrect card!", 1000);
 				setTimeout(function(){changeTurn();}, 1000);
+			} else if(!guesses){
+				changeTurn();
 			}
 		} else{
 			popUpMsg("Enter a Clue!", 1000);
