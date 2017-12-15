@@ -1,4 +1,4 @@
-console.log("this is initializing codeGiver logic.  main.js should be loaded prior to using this.");
+// console.log("this is initializing codeGiver logic.  main.js should be loaded prior to using this.");
 $(document).ready(function(){
 	let $boardArray = [];
 	$('#clicker').click(function(event){

@@ -19,7 +19,6 @@ $(document).ready(function(){
 		keepGuessing = false;
 		randomSeed = Number(localStorage.getItem("seed"));
 		$boardArray = [];
-		console.log(makeRandArray(randomSeed));
 		makeGameBoard(makeRandArray(randomSeed));
 	}
 
@@ -37,7 +36,6 @@ function popUpMsg(myString, myTime){
 
 // displays code on click to help codeGivers re-initialize
 $('#code').click(function(){
-	console.log('in click fx!');
 	popUpMsg(("Code: " + randomSeed + ".   Word: " + wordArray[makeRandArray(randomSeed)[0]]), 10000);
 });
 
@@ -88,14 +86,12 @@ $('#code').click(function(){
 	function gameOver(whoWon){
 		score = Number($('#'+whoWon+'Score').text());
 		score++;
-		console.log(score);
 		Number($('#'+whoWon+'Score').text(score));
 		$('#gameOver').css('display','block').text("The Game is Over.  Please click anywhere to start a new game.").show();
 		$('#gameOver').one('click', function(){
 			randomSeed = Math.floor(Math.random()*10000000000);
 			localStorage.setItem("seed", randomSeed);
 			randArray = makeRandArray(randomSeed);
-			console.log(randArray);
 			newWord = wordArray[randArray[0]];
 			$('#gameOver').text("Teams:  Choose new Code Givers.  Your new code is: " + randomSeed + ".  The verification word should be: " + newWord);
 			$('#gameOver').one('click', function(){
