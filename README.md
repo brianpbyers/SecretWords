@@ -28,10 +28,9 @@
 ##### Images on real game not easily accessible.  Had to design own
 
 ### TO DO List
-Add an animation or object constructor
 Put files in folders
 GET CARD FLIPS TO WORK!!!!
-
+Get modals to work on iOS
 
 
 ***

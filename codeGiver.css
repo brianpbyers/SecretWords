@@ -24,6 +24,7 @@ h1{
 	background-color: #444;
 }
 
+/*form entries to generate game board*/
 #textEntry {
 	width: 34vw;
 	padding-top: 15vh;
@@ -72,6 +73,7 @@ label {
 	margin: auto;
 }
 
+/*each part of the key is generated in its own card div*/
 .card {
 	float: left;
 	max-width:18vh;

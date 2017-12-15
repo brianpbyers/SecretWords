@@ -5,17 +5,19 @@ body {
 	height: 100vh;
 	background: linear-gradient(90deg, #aaa, black);
 	background-size: 400% 400%;
-	-webkit-animation: test 2s ease 1s infinite;
-	-o-animation: test 2s ease 1s infinite;
-	animation: test 15s linear 1s infinite;
+	-webkit-animation: bgGrad 2s ease 1s infinite;
+	-o-animation: bgGrad 2s ease 1s infinite;
+	animation: bgGrad 15s linear 1s infinite;
 }
 
-@keyframes test {
+/*subtly changes the background color*/
+@keyframes bgGrad {
 	0% {background-position: 0% 50%;}
 	50% { background-position: 100% 50%; }
 	100% { background-position: 0% 50%;}
 }
 
+/*bg pic overlaid on top of the changing bg gradient*/
 #bgPic {
 	position: absolute;
 	left: 0;
@@ -41,6 +43,7 @@ h1 {
 	color: white;
 }
 
+/*gives instruction to code givers*/
 #tellGivers {
 	margin: 3vh auto 0 auto;
 	width: 50vw;

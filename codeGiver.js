@@ -7,7 +7,6 @@ $(document).ready(function(){
 		// storing it now.  Will figure out if necessary later
 		localStorage.setItem("seed",randSeed);
 		randArray = makeRandArray(randSeed);
-		// console.log(randArray);
 		if(randSeed%2 ===1){
 			console.log('red goes first');
 			colorCodes.push('R');
@@ -28,12 +27,10 @@ $(document).ready(function(){
 	function makeCodeBoard(mySecretKey){
 		$('.before').hide();
 		$('.after').show();
-		console.log('making Code Board');
 		for(let i = 0; i<25; ++i){
 			$boardArray[i] = $('<div/>');
 			$($boardArray[i]).html('<div/>').addClass(mySecretKey[i] + ' card');
 			$('#codeBoard').append($($boardArray[i]));
-			console.log(mySecretKey[i]);
 		}
 	}
 });

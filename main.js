@@ -29,27 +29,22 @@ let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B
 	// changed random logic to ensure we're not picking the same word twice.
 	// shouldn't affect the 'randomness' of the colorCode logic
 	function makeRandArray(mySeed){
-		console.log('making Random Array using seed: ' + mySeed);
 		let myRandArray = [];
 		let newRand;
 		let iterator = 0;
 		while(myRandArray.length<50){
-			// console.log('Math.sin of ' + mySeed + ' + ' + iterator + ' is ' + Math.sin(mySeed + iterator));
 			newRand = Math.sin(mySeed + iterator) * 10000;
-			// console.log(newRand);
 			newRand = Math.floor((newRand - Math.floor(newRand))*wordArray.length);
-			// console.log(newRand);
 			if(!myRandArray.includes(newRand)){
 				myRandArray.push(newRand);
 			}
 			iterator++;
 		}
-		// console.log('Random Array: ' + myRandArray);
 		return(myRandArray);
 	}
+
 	// generating a secret key by taking the back 25 of the random array and sorting them (and the color array) based on their values
 	function getSecretKey(myArray, myColors){
-		console.log('making Secret Key');
 		for(let i = 25;i<myArray.length;++i){
 			for(let j = i+1; j<myArray.length;++j){
 				if(myArray[j]<myArray[i]){
@@ -62,8 +57,6 @@ let colorCodes = ['R','R','R','R','R','R','R','R','B','B','B','B','B','B','B','B
 				}
 			}
 		}
-		// console.log('my Colors ' + myColors);
-		// console.log('my Array ' + myArray);
 		return myColors;
 	}
 

@@ -6,25 +6,28 @@ body {
 	font-family: sans-serif;
 }
 
+/*styles modals*/
 #popUp {
 	background-color: rgba(0,0,0,.8);
 	margin-top: 35vh;
-	height: 30vh;
-	width: 30vw;
+	padding: 10vh 10vw 0 10vw;
+	height: 20vh;
+	width: 15vw;
 	text-align: center;
 	color:white;
 	text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
 }
 
+/*styles game over modal*/
 #gameOver {
 	display: none;
 	width: 70vw;
-	height: 100vh;
-	padding: 8vh 15vw;
+	height: 75vh;
+	padding: 25vh 20vw;
 	font-size: 8vh;
 	text-align: center;
 	color:white;
-	background-color: rgba(0,0,0, .5);
+	background-color: rgba(0,0,0,.7);
 	text-shadow: 2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black;
 
 }
@@ -35,6 +38,7 @@ body {
 	background-color: #ddd;
 	box-sizing: border-box;
 }
+
 /*the team class and ids refer to the left and right side of the gameboard.  score and words will be in here*/
 .teamDisplay {
 	padding-top: 3vh;
@@ -47,6 +51,7 @@ body {
 	font-weight: 700;
 }
 
+/*uls hold all clues given by code givers in li elements*/
 ul {
 	width:100%;
 	font-size: 3vh;
@@ -62,6 +67,7 @@ li {
 	margin: 0: auto;
 }
 
+/*this allows js file to alternate top panel based on whos turn it is*/
 #redTeam {
 	float: left;
 	background-color: #d13636;
@@ -124,6 +130,7 @@ input {
 	margin-right:2vh;
 }
 
+/*the submitSecrets button allows codegivers to enter clues.  it changes into an end turn button as necesary*/
 #submitSecrets {
 	font-size: 2vh;
 	padding: .5vh .5vw;
