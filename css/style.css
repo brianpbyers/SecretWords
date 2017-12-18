@@ -198,7 +198,7 @@ input {
 	-o-animation: flipItR 1s ease .2s 1;
 	animation: flipItR 1s ease .2s 1;*/
 	background-color: #d13636;
-	background-image: url("assets/noBGSpy.png");
+	background-image: url("../assets/noBGSpy.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -209,7 +209,7 @@ input {
 	-o-animation: flipItR 1s ease .2s 1;
 	animation: flipItR 1s ease .2s 1;*/
 	background-color: #3645d1;
-	background-image: url("assets/noBGSpy.png");
+	background-image: url("../assets/noBGSpy.png");
 	background-position:center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -220,7 +220,7 @@ input {
 	-o-animation: flipItR 1s ease .2s 1;
 	animation: flipItR 1s ease .2s 1;*/
 	background-color: beige;
-	background-image: url("assets/civ.png");
+	background-image: url("../assets/civ.png");
 	background-position:center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -233,7 +233,7 @@ input {
 	animation: flipItR 1s ease .2s 1;*/
 /*	background-color: black;*/
 	background-color: black;
-	background-image: url("assets/spy.jpg");
+	background-image: url("../assets/spy.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
