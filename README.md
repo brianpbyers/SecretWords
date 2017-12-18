@@ -7,6 +7,14 @@
 [Game Board WireFrame](https://wireframe.cc/EtHVJS)
 
 ***
+
+![Landing Page Wireframe](/assets/LandingPageWF.png)
+
+***
+
+![Game Board Wireframe](/assets/GameBoardWF.png)
+
+***
 ### Technologies used: 
 #### HTML 
 #### CSS 
