@@ -1,4 +1,4 @@
-[SecretWords](https://brianpbyers.github.io/WDI-Project1/)
+[SecretWords](https://brianpbyers.github.io/SecretWords/)
 
 [Trello Board](https://trello.com/b/M7FSZEet/project-1)
 
